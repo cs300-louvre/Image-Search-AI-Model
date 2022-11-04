@@ -46,7 +46,7 @@ python api.py --host 0.0.0.0 --port 80
 ### Search by image
 
 ```bash
-curl -X POST -H 'Content-Type:application/json' -d '{"image": <base64>}' http://localhost:80/search
+curl -X POST -H 'Content-Type:application/json' -d '{"image": <base64>}' http://localhost:80/api
 ```
 
 base64: Base64 encoded image
@@ -54,14 +54,14 @@ base64: Base64 encoded image
 for example:
 
 ```bash
-curl -X POST -H 'Content-Type:application/json' -d '{"image": "/9j/4AAQSkZJRgAB..."}' http://localhost:80/search
-curl -X POST -H 'Content-Type:application/json' -d '{"image": "data:image/png;base64,/9j/4AAQSkZJRgAB..."}' http://localhost:80/search
+curl -X POST -H 'Content-Type:application/json' -d '{"image": "/9j/4AAQSkZJRgAB..."}' http://localhost:80/api
+curl -X POST -H 'Content-Type:application/json' -d '{"image": "data:image/png;base64,/9j/4AAQSkZJRgAB..."}' http://localhost:80/api
 ```
 
 ### Search by text
 
 ```bash
-curl -X POST -H 'Content-Type:application/json' -d '{"search_text":"a cat"}' 192.168.1.144:80/api
+curl -X POST -H 'Content-Type:application/json' -d '{"search_text":"a cat"}' http://localhost:80/api
 ```
 
 ### Web UI
