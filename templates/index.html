@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Search AI Model</title>
+    <link rel="icon" href="assets/cat_icon_2.png">
+</head>
+<body>
+    <h1 style="text-align: center;">Test API: Image Search AI Model</h1>
+
+    <div class="row">
+        <div class="column">
+            <h3> Search by text </h3>
+            <form style="text-align: center;">
+                <input type="text" id="search_text" name="search_text" placeholder="Search by text" style="width: 50%;">
+                <button type="button" onclick="searchtext()">Search</button>
+            </form> 
+        </div>
+
+        <div class="column">
+            <h3>Upload an image to search for similar images</h3>
+            <form style="text-align: center;">
+                <img id="frame" src="assets/upload-image.png" width="30%" height="30%"/>
+                <input type="file" onchange="preview()" hidden="hidden" id="file" accept="image/*">
+            </form> 
+            <form style="text-align: center;">
+                <button type="button" onclick="searchimage()">Search</button>
+            </form>
+        </div>
+    </div>
+    
+    <h3 style="text-align: center;">Results</h3>
+    <div id="results" style="text-align: center;"></div>
+
+    <script>
+        function preview() {
+            frame.src=URL.createObjectURL(event.target.files[0]);
+        }
+        frame.onclick = function() {
+            file.click();
+        }
+
+        function searchtext() {
+            var search_text = document.getElementById("search_text").value;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/api', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify({ "search_text": search_text }));
+            xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        var results = response.results;
+                        var html = '';
+                        for (var i = 0; i < results.length; i++) {
+                            html += '<img src="' + results[i] + '" width="200dp" height="200dp"/>';
+                        }
+                        document.getElementById('results').innerHTML = html;
+                    }
+                }
+        }
+
+        function searchimage() {
+            var file = document.getElementById('file').files[0];
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                var base64data = reader.result;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/api', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({image: base64data}));
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        var results = response.results;
+                        var html = '';
+                        for (var i = 0; i < results.length; i++) {
+                            html += '<img src="' + results[i] + '" width="200dp" height="200dp"/>';
+                        }
+                        document.getElementById('results').innerHTML = html;
+                    }
+                }
+            }
+            reader.readAsDataURL(file);
+        }
+
+    </script>
+
+</body>
+</html>
