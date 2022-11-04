@@ -68,11 +68,11 @@ curl -X POST -H 'Content-Type:application/json' -d '{"search_text":"a cat"}' 192
 
 This is a simple web UI that allows you to search for images using image or text.
 
-![Image](res\webUI.png)
+![Image](res/webUI.png)
 
 The results are displayed.
 
-![Image](res\webUI_results.png)
+![Image](res/WebUI_results.png)
 
 ## Docker
 
