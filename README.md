@@ -14,7 +14,7 @@ This is a simple API that allows you to search for images using image or text.
 1. Clone the repository
 
 ```bash
-git clone <repo>.git
+git clone https://github.com/cs300-louvre/Image-Search-AI-Model.git
 ```
 
 2. Create a virtual environment
@@ -32,7 +32,7 @@ pip install -r requirements.txt
 4. Run the API
 
 ```bash
-python app.py --host 0.0.0.0 --port 80
+python api.py --host 0.0.0.0 --port 80
 ```
 
 ## Usage
