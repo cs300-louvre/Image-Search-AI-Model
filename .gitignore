@@ -3,3 +3,7 @@ __pycache__/
 
 # embedding
 embedding/
+
+# environments
+env/
+venv/
