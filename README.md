@@ -20,7 +20,13 @@ git clone https://github.com/cs300-louvre/Image-Search-AI-Model.git
 2. Create a virtual environment
 
 ```bash
-python3 -m venv venv
+python3 -m venv env
+
+# activate environment (windows)
+env\Scripts\activate
+
+# (Mac OS / Linux)
+source env/bin/activate
 ```
 
 3. Install the requirements
