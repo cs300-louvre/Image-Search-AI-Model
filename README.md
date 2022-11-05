@@ -80,7 +80,7 @@ The results are displayed.
 
 ![Image](res/WebUI_results.png)
 
-## Docker
+## <img src="https://user-images.githubusercontent.com/60825385/200105857-1af2d06b-f366-4e75-8d8a-5420480152f7.png" alt="drawing" width="20"/> Docker (optional)
 
 ### Build
 
